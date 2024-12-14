@@ -7,3 +7,4 @@ envs/.env
 
 .DS_Store
 
+.coverage
