@@ -8,3 +8,5 @@ envs/.env
 .DS_Store
 
 .coverage
+
+docs/build
