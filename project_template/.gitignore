@@ -1,0 +1,12 @@
+.idea
+.vscode
+
+envs/.env
+
+**/*.pyc
+
+.DS_Store
+
+.coverage
+
+docs/build
