@@ -1,10 +1,7 @@
-from datetime import datetime
 
+from .todo import Todo
 
-
-import uuid
-
-def init_todo(name: str) -> dict[str, str | uuid.UUID | datetime]:
+def init_todo(name: str) -> Todo:
     """
     Initializes a to-do task with the provided name, generating a unique ID and
     capturing the creation timestamp. The task is assigned a "pending" status
@@ -13,20 +10,12 @@ def init_todo(name: str) -> dict[str, str | uuid.UUID | datetime]:
     :param name: The name of the task to initialize. Must not be empty.
     :type name: str
     :raises ValueError: If the provided task name is empty.
-    :return: A dictionary containing the task's name, status, unique ID, and
+    :return: A Todo object containing the task's name, status, unique ID, and
         creation timestamp.
-    :rtype: dict[str, str | uuid.UUID | datetime]
+    :rtype: Todo
     """
 
-    cleaned_name: str = name.strip()
+    return Todo(name)
 
 
-    if cleaned_name == "":
-        raise ValueError("Task name is required.")
 
-    return {
-        "name": cleaned_name,
-        "status": "pending",
-        "id": uuid.uuid4(),
-        "created_at": datetime.now()
-    }

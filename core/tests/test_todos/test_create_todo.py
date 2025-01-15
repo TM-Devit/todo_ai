@@ -7,21 +7,20 @@ from freezegun import freeze_time
 
 from core.todos.create_todo import init_todo
 
+from core.todos.todo import Status, Todo
+
 
 def test_create_basic_valid_todo() -> None:
     mock_uuid = uuid.UUID("352c9582-2d41-4ba7-9b9e-d8e7d72ee7ac")
 
     with freeze_time("2024-12-12"), patch("uuid.uuid4", return_value=mock_uuid):
-        todo: dict[str, str] = init_todo(
+        todo: Todo = init_todo(
             name="Learn Flask"
         )
 
-    assert todo == {
-        "name": "Learn Flask",
-        "status": "pending",
-        "id": mock_uuid,
-        "created_at": datetime(2024, 12, 12)
-    }
+    assert todo == Todo(
+        name="Learn Flask"
+    )
 
 
 def test_create_todo_with_empty_name():
